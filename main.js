@@ -14,7 +14,6 @@ Stimulus.start();
 
 Stimulus.register("lib-drawer", class extends Controller {
     connect() {
-        console.log("test");
         setTimeout(() => this.getTarget("nav").classList.add("is-transition"), 50);
         this.getTarget("nav").addEventListener("click", (e) => {
             if (e.target === this.getTarget("nav")) {
