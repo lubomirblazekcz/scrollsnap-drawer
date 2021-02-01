@@ -1,0 +1,85 @@
+.lib-drawer {
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+
+  &[data-action*="scroll"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &.state-active {
+      scroll-snap-type: x mandatory;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &:before {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-color: fade(#222, 60%);
+    content: "";
+    opacity: var(--drawerOpacity);
+
+    .is-opacity& {
+      transition: opacity 0.3s;
+    }
+
+    :not(.state-active)& {
+      opacity: 0;
+    }
+  }
+
+  &:not(.state-active) {
+    pointer-events: none;
+    > div {
+      transform: translateX(-28.125rem);
+
+      @media all and (max-width: 47.9375em) {
+        transform: translateX(-22.5rem);
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    min-width: 100vw;
+    scroll-snap-align: end;
+  }
+
+  > div {
+    scroll-snap-align: end;
+
+    .is-transition& {
+      transition: transform 0.3s;
+    }
+  }
+}
+
+nav {
+  > .wrp_nav {
+    min-width: 22.5rem;
+    background-color: #fff;
+    height: 100vh;
+  }
+}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="cs">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1, viewport-fit=cover" />
+        <link rel="stylesheet/less" type="text/css" href="main.less" />
+        <script src="https://cdn.jsdelivr.net/npm/less@4.1.1/dist/less.min.js"></script>
+    </head>
+    <body data-controller="lib-drawer">
+        <nav class="lib-drawer" data-lib-drawer-target="nav" data-action="scroll->lib-drawer#scroll">
+            <div class="wrp_nav">
+                <button data-action="lib-drawer#hide">Hide drawer</button>
+            </div>
+        </nav>
+        <button data-action="click->lib-drawer#show">Show drawer</button>
+        <script src="main.js" type="module"></script>
+    </body>
+</html>
