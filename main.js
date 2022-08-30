@@ -27,6 +27,10 @@ Stimulus.register("lib-drawer", class extends Controller {
         this.getTarget("nav").style.setProperty('--drawerOpacity', `1`);
         this.getTarget("nav").classList.add("is-opacity", "state-active");
         document.documentElement.classList.add("drawer-active");
+
+        setTimeout(() => {
+            this.getTarget("nav").scrollLeft = 0;
+        }, 100)
     }
 
     hide() {
@@ -37,14 +41,15 @@ Stimulus.register("lib-drawer", class extends Controller {
     }
 
     scroll(e) {
-        if (e.target.scrollLeft > 1) {
-            this.getTarget("nav").classList.remove("is-opacity");
-            this.getTarget("nav").style.setProperty('--drawerOpacity', `${Math.abs((e.target.scrollLeft / this.getTarget("nav").children[0].clientWidth) - 1)}`);
-        }
-
-        if (e.target.scrollLeft === this.getTarget("nav").children[0].clientWidth) {
-            this.getTarget("nav").classList.remove("state-active");
-            document.documentElement.classList.remove("drawer-active");
-        }
+        console.log(e.target.scrollLeft)
+        // if (e.target.scrollLeft > 1) {
+        //     this.getTarget("nav").classList.remove("is-opacity");
+        //     this.getTarget("nav").style.setProperty('--drawerOpacity', `${Math.abs((e.target.scrollLeft / this.getTarget("nav").children[0].clientWidth) - 1)}`);
+        // }
+        //
+        // if (e.target.scrollLeft === this.getTarget("nav").children[0].clientWidth) {
+        //     this.getTarget("nav").classList.remove("state-active");
+        //     document.documentElement.classList.remove("drawer-active");
+        // }
     }
 });
